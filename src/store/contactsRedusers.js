@@ -15,7 +15,7 @@ const items = createReducer([], {
     return [...state, payload];
   },
   [deleteCurrentContact.fulfilled]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload.id),
+    state.filter((item) => item.id !== payload),
 });
 
 const isLoading = createReducer(false, {
