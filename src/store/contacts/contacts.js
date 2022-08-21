@@ -26,16 +26,6 @@ const contactsSlice = createSlice({
   },
 });
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
-
-export default persistReducer(
-  persistConfig,
-  contactsSlice.reducer
-);
-
 export const { addContact, deleteContact, filterContacts } =
   contactsSlice.actions;
 
