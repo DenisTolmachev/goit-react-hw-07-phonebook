@@ -1,4 +1,5 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
+import { filteredContacts } from './contactsActions';
 import {
   getCurrentContacts,
   addNewContact,
@@ -17,8 +18,24 @@ const contacts = createReducer([], {
     state.filter(({ id }) => id !== payload.id),
 });
 
+const isLoading = createReducer(false, {
+    [getCurrentContacts.fulfilled]: () => false,
+    [getCurrentContacts.pending]: () => true,
+    [getCurrentContacts.rejected]: () => false,
+    [addNewContact.pending]: () => true,
+    [addNewContact.fulfilled]: () => false,
+    [addNewContact.rejected]: () => false,
+    [deleteCurrentContact.pending]: () => true,
+    [deleteCurrentContact.fulfilled]: () => false,
+    [deleteCurrentContact.rejected]: () => false,
+});
+
+const filter = createReducer('', {
+    [filteredContacts]: (_, {payload}) => payload,
+})
+
 export default combineReducers({
   contacts,
-  // isLoading,
-  // filter,
+  isLoading,
+  filter,
 });
