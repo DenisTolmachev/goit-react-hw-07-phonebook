@@ -9,8 +9,8 @@ import {
 } from './Form.styled';
 import { Button } from 'components/common/Button.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getItems } from 'store/contacts/contacts';
-import { addContact } from 'store/contacts/contacts';
+import { getItems } from 'store/contactsSelectors';
+import { addNewContact } from 'store/contactsOperations';
 
 const phoneRegex = RegExp(
   /\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
@@ -65,7 +65,7 @@ export const ContactForm = () => {
     if (contactsCheck(newName)) {
       alert(`${newName.name} is already in contacts`);
     } else {
-      dispatch(addContact(newName));
+      dispatch(addNewContact(newName));
     }
 
     resetForm();

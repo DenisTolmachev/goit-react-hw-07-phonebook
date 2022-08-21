@@ -5,15 +5,21 @@ import {
 } from './ContactList.styled';
 import { Button } from 'components/common/Button.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getItems, getFilter, deleteContact } from 'store/contacts/contacts';
+import { getCurrentContacts, deleteCurrentContact } from 'store/contactsOperations';
+import { getItems, getFilter } from 'store/contactsSelectors';
+import { useEffect } from 'react';
 
 export const ContactList = () => {
   const filter = useSelector(getFilter);
   const items = useSelector(getItems);
   const dispatch = useDispatch();
 
+useEffect(() => {
+  dispatch(getCurrentContacts());
+}, [dispatch]);
+
   const deleteItems = id => {
-    dispatch(deleteContact(id));
+    dispatch(deleteCurrentContact(id));
   };
 
   const getFilteredContacts = () => {

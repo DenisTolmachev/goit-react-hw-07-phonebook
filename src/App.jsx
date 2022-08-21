@@ -4,7 +4,7 @@ import { Filter } from 'components/Filter/Filter';
 import { Notification } from 'components/common/Notification.styled';
 import { Container } from 'components/common/Container.styled';
 import { useSelector } from 'react-redux';
-import { getItems } from 'store/contacts/contacts';
+import { getItems } from 'store/contactsSelectors';
 
 export const App = () => {
   const contacts = useSelector(getItems);
