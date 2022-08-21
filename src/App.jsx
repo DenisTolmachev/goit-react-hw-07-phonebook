@@ -8,6 +8,7 @@ import { getItems } from 'store/contactsSelectors';
 
 export const App = () => {
   const contacts = useSelector(getItems);
+  console.log(contacts);
 
   return (
     <Container>

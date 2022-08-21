@@ -6,7 +6,7 @@ import {
   deleteCurrentContact,
 } from './contactsOperations';
 
-const contacts = createReducer([], {
+const items = createReducer([], {
   [getCurrentContacts.fulfilled]: (_, { payload }) => payload,
   [addNewContact.fulfilled]: (state, { payload }) => {
     if (!payload) {
@@ -35,7 +35,7 @@ const filter = createReducer('', {
 })
 
 export default combineReducers({
-  contacts,
+  items,
   isLoading,
   filter,
 });
