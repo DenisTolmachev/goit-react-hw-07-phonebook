@@ -14,8 +14,6 @@ export const ContactList = () => {
   const items = useSelector(getItems);
   const dispatch = useDispatch();
 
-  console.log(items);
-
 useEffect(() => {
   dispatch(getCurrentContacts());
 }, [dispatch]);
