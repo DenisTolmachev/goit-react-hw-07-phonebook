@@ -12,7 +12,7 @@ const items = createReducer([], {
     if (!payload) {
       return state;
     }
-    return [...state, payload];
+    return [payload, ...state ];
   },
   [deleteCurrentContact.fulfilled]: (state, { payload }) =>
     state.filter((item) => item.id !== payload),
