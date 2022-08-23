@@ -16,7 +16,7 @@ export const getCurrentContacts = createAsyncThunk(
 
 export const addNewContact = createAsyncThunk(
   'contacts/addNewContact',
-  async (contact) => {
+  async contact => {
     try {
       await API.addContact(contact);
       toast.success('Contact added!');
@@ -30,7 +30,7 @@ export const addNewContact = createAsyncThunk(
 
 export const deleteCurrentContact = createAsyncThunk(
   'contacts/deleteCurrentContact',
-  async (id) => {
+  async id => {
     try {
       await API.deleteContact(id);
       toast.success('Contact deleted!');

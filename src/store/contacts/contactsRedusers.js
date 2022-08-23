@@ -7,26 +7,26 @@ import {
 } from './contactsOperations';
 
 const items = createReducer([], {
-  [getCurrentContacts.fulfilled]: (_, {payload}) => payload,
-  [addNewContact.fulfilled]: (_, {payload}) => payload,
-  [deleteCurrentContact.fulfilled]: (_, {payload}) => payload,
+  [getCurrentContacts.fulfilled]: (_, { payload }) => payload,
+  [addNewContact.fulfilled]: (_, { payload }) => payload,
+  [deleteCurrentContact.fulfilled]: (_, { payload }) => payload,
 });
 
 const isLoading = createReducer(false, {
-    [getCurrentContacts.fulfilled]: () => false,
-    [getCurrentContacts.pending]: () => true,
-    [getCurrentContacts.rejected]: () => false,
-    [addNewContact.pending]: () => true,
-    [addNewContact.fulfilled]: () => false,
-    [addNewContact.rejected]: () => false,
-    [deleteCurrentContact.pending]: () => true,
-    [deleteCurrentContact.fulfilled]: () => false,
-    [deleteCurrentContact.rejected]: () => false,
+  [getCurrentContacts.fulfilled]: () => false,
+  [getCurrentContacts.pending]: () => true,
+  [getCurrentContacts.rejected]: () => false,
+  [addNewContact.pending]: () => true,
+  [addNewContact.fulfilled]: () => false,
+  [addNewContact.rejected]: () => false,
+  [deleteCurrentContact.pending]: () => true,
+  [deleteCurrentContact.fulfilled]: () => false,
+  [deleteCurrentContact.rejected]: () => false,
 });
 
 const filter = createReducer('', {
-    [filteredContacts]: (_, {payload}) => payload,
-})
+  [filteredContacts]: (_, { payload }) => payload,
+});
 
 export default combineReducers({
   items,
