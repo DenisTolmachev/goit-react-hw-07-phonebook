@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as API from 'services/contactsApi';
+import { toast } from 'react-toastify';
 
 export const getCurrentContacts = createAsyncThunk(
   'contacts/getCurrentContacts',
   async (_, { rejectWithValue }) => {
     try {
       const data = await API.getContacts();
-      return data
+      return data;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -17,7 +18,10 @@ export const addNewContact = createAsyncThunk(
   'contacts/addNewContact',
   async (contact, { rejectWithValue }) => {
     try {
-      return API.addContact(contact);
+      await API.addContact(contact);
+      toast.success('Contact added!');
+      const data = await API.getContacts();
+      return data;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -28,8 +32,10 @@ export const deleteCurrentContact = createAsyncThunk(
   'contacts/deleteCurrentContact',
   async (id, { rejectWithValue }) => {
     try {
-      API.deleteContact(id);
-      return id;
+      await API.deleteContact(id);
+      toast.success('Contact deleted!');
+      const data = await API.getContacts();
+      return data;
     } catch (error) {
       return rejectWithValue(error);
     }

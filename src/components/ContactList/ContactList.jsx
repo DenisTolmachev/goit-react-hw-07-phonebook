@@ -5,7 +5,10 @@ import {
 } from './ContactList.styled';
 import { Button } from 'components/common/Button.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCurrentContacts, deleteCurrentContact } from 'store/contacts/contactsOperations';
+import {
+  getCurrentContacts,
+  deleteCurrentContact,
+} from 'store/contacts/contactsOperations';
 import { getItems, getFilter } from 'store/contacts/contactsSelectors';
 import { useEffect } from 'react';
 
@@ -14,22 +17,18 @@ export const ContactList = () => {
   const items = useSelector(getItems);
   const dispatch = useDispatch();
 
-useEffect(() => {
-  dispatch(getCurrentContacts());
-}, [dispatch]);
+  useEffect(() => {
+    dispatch(getCurrentContacts());
+  }, [dispatch]);
 
   const deleteItems = id => {
     dispatch(deleteCurrentContact(id));
   };
 
-  const getFilteredContacts = () => {
-    const normalizedContacts = filter.toLowerCase();
-    return items.filter(item =>
-      item.name.toLowerCase().includes(normalizedContacts)
-    );
-  };
-
-  const filteredContacts = getFilteredContacts();
+  const normalizeContact = filter.toLowerCase();
+  const filteredContacts = items.filter(item =>
+    item.name.toLowerCase().includes(normalizeContact)
+  );
 
   return (
     <ContactListList>

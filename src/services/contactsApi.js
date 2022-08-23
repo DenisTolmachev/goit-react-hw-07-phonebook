@@ -3,16 +3,14 @@ import { BASE_URL } from 'constants/constants';
 
 axios.defaults.baseURL = BASE_URL;
 
-export const getContacts = async() => {
-  const { data } = await axios.get(`/contacts`);
-  return data;
-}
+export const getContacts = async () => {
+  return await axios.get(`/contacts`);
+};
 
-export const addContact = async(contact) => {
-  const { data } = await axios.post(`/contacts`, contact);
-  return data;
-}
+export const addContact = async contact => {
+  return await axios.post(`/contacts`, contact);
+};
 
-export const deleteContact = async(id) => {
-    await axios.delete(`/contacts/${id}`);
-}
+export const deleteContact = async id => {
+  return await axios.delete(`/contacts/${id}`);
+};
