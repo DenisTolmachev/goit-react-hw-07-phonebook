@@ -9,8 +9,8 @@ import {
 } from './Form.styled';
 import { Button } from 'components/common/Button.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getItems } from 'store/contactsSelectors';
-import { addNewContact } from 'store/contactsOperations';
+import { getItems } from 'store/contacts/contactsSelectors';
+import { addNewContact } from 'store/contacts/contactsOperations';
 
 const phoneRegex = RegExp(
   /\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/

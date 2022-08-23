@@ -5,8 +5,8 @@ import {
 } from './ContactList.styled';
 import { Button } from 'components/common/Button.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCurrentContacts, deleteCurrentContact } from 'store/contactsOperations';
-import { getItems, getFilter } from 'store/contactsSelectors';
+import { getCurrentContacts, deleteCurrentContact } from 'store/contacts/contactsOperations';
+import { getItems, getFilter } from 'store/contacts/contactsSelectors';
 import { useEffect } from 'react';
 
 export const ContactList = () => {
