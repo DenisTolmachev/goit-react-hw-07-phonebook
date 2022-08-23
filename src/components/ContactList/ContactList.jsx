@@ -25,10 +25,13 @@ export const ContactList = () => {
     dispatch(deleteCurrentContact(id));
   };
 
+  console.log(items);
   const normalizeContact = filter.toLowerCase();
   const filteredContacts = items.filter(item =>
     item.name.toLowerCase().includes(normalizeContact)
   );
+
+  console.log(filteredContacts);
 
   return (
     <ContactListList>
