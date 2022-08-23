@@ -11,6 +11,7 @@ import { Button } from 'components/common/Button.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { getItems } from 'store/contacts/contactsSelectors';
 import { addNewContact } from 'store/contacts/contactsOperations';
+import { toast } from "react-toastify";
 
 const phoneRegex = RegExp(
   /\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
@@ -63,7 +64,7 @@ export const ContactForm = () => {
     };
 
     if (contactsCheck(newName)) {
-      alert(`${newName.name} is already in contacts`);
+      toast.error(`${newName.name} is already in contacts`);
     } else {
       dispatch(addNewContact(newName));
     }
